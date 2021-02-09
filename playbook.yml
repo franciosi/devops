@@ -3,10 +3,9 @@
   hosts: host_1,host_2
   become: true
   gather_facts: no
-  user: root
+  remote_user: root
    
   vars:
-    ansible_ssh_private_key_file: /path/to/your/.ssh/key.pem
     domain_name: www.example.com
     letsencrypt_email: example@example.com
 
@@ -20,10 +19,10 @@
     - name: Install nginx
       apt: name=nginx state=latest
 
-    - name: install letsencrypt
+    - name: Install letsencrypt
       apt: name=letsencrypt state=latest
 
-    - name: create letsencrypt directory
+    - name: Create letsencrypt directory
       file: name=/var/www/letsencrypt state=directory
 
     - name: Remove default nginx config
